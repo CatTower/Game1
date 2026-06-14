@@ -84,9 +84,9 @@
   function spawnBlock() {
     const word = getRandomWord();
     const hp = word.length;
-    // Spread widely across X and Y
-    const x = (Math.random() - 0.5) * 1200; 
-    const y = (Math.random() - 0.5) * 800;
+    // Sea horizon effect: Ground level Y, wide X spread, far Z
+    const x = (Math.random() - 0.5) * 1600; 
+    const y = 150 + Math.random() * 100; // Fixed Y (below horizon). As it comes closer, it drops down.
     const z = -4000; // Far away
     
     blocks.push({
@@ -127,7 +127,7 @@
 
     // Update blocks (moving towards camera, increasing Z)
     for (let i = blocks.length - 1; i >= 0; i--) {
-      const approachSpeed = 1500 / Math.max(1, blocks[i].word.length);
+      const approachSpeed = 1200 / Math.max(1, blocks[i].word.length);
       blocks[i].z += approachSpeed * dt;
       
       if (blocks[i].z > 600) { // Hit screen/camera
@@ -156,7 +156,7 @@
       const dz = target.z - p.z;
       const dist = Math.hypot(dx, dy, dz);
       
-      if (dist < 150) { // Collision threshold
+      if (dist < 200) { // Collision threshold
         target.hp = 0;
         triggerExplosion(target.x, target.y, target.z);
         score += target.maxHp * 10;
@@ -188,8 +188,8 @@
         id: projIdCounter++,
         targetId: target.id,
         x: 0,
-        y: 400, // Bottom of screen
-        z: 800 // Near camera
+        y: 200, // Bottom of view
+        z: 400 // Slightly in front of camera
       });
     }
 
