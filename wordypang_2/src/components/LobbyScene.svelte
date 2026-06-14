@@ -19,6 +19,40 @@
     }))
   );
 
+  let userMedals = $derived.by(() => {
+    const medalsMap: Record<string, string> = {};
+    if (!appState.allUsers) return medalsMap;
+    
+    appState.allUsers.forEach(u => medalsMap[u.nickname] = '');
+
+    const games = [
+      'wordyPang2HighScore',
+      'dodgePoopHighScore',
+      'wordChainHighScore',
+      'wordyPangDropHighScore',
+      'blockBlastHighScore'
+    ];
+
+    for (const game of games) {
+      const sorted = [...appState.allUsers]
+        .filter(u => u.stats && (u.stats as any)[game] > 0)
+        .sort((a, b) => (b.stats as any)[game] - (a.stats as any)[game]);
+      
+      if (sorted[0]) medalsMap[sorted[0].nickname] += '🥇';
+      if (sorted[1]) medalsMap[sorted[1].nickname] += '🥈';
+      if (sorted[2]) medalsMap[sorted[2].nickname] += '🥉';
+    }
+
+    const order: Record<string, number> = {'🥇': 1, '🥈': 2, '🥉': 3};
+    for (const nick in medalsMap) {
+      if (medalsMap[nick]) {
+        medalsMap[nick] = Array.from(medalsMap[nick]).sort((a, b) => order[a] - order[b]).join('');
+      }
+    }
+
+    return medalsMap;
+  });
+
   function launchGame(gameId: string) {
     if (gameId === 'wordypang2') {
       appState.currentScene = 'wordypang2';
@@ -50,9 +84,9 @@
         <img src={appState.user.avatarImage} alt="My Avatar" class="my-avatar" />
       {/if}
       <div class="profile-info">
-        <div class="nickname">{appState.user?.nickname}</div>
-        <div class="stats connected-users" title={appState.allUsers.map(u => u.nickname).join(', ')}>
-          접속자: {appState.allUsers.map(u => u.nickname).join(', ')}
+        <div class="nickname">{appState.user?.nickname}{userMedals[appState.user?.nickname || '']}</div>
+        <div class="stats connected-users" title={appState.allUsers.map(u => `${u.nickname}${userMedals[u.nickname]}`).join(', ')}>
+          접속자: {appState.allUsers.map(u => `${u.nickname}${userMedals[u.nickname]}`).join(', ')}
         </div>
       </div>
     </div>
@@ -65,7 +99,7 @@
     {#if appState.user?.avatarImage}
       <div class="floating-avatar my-floating" style="--float-delay: 0s;">
         <img src={appState.user.avatarImage} alt="Me" />
-        <span class="avatar-name">나</span>
+        <span class="avatar-name">나 {userMedals[appState.user.nickname] || ''}</span>
       </div>
     {/if}
 
@@ -73,7 +107,7 @@
     {#each otherUsers as u}
       <div class="floating-avatar other" style="left: {u.x}%; top: {u.y}%; --float-delay: {u.delay}s;">
         <img src={u.avatarImage} alt={u.nickname} />
-        <span class="avatar-name">{u.nickname}</span>
+        <span class="avatar-name">{u.nickname} {userMedals[u.nickname] || ''}</span>
       </div>
     {/each}
   </div>
