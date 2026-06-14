@@ -1,0 +1,243 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap');
+
+/* Default Theme Variables */
+:root {
+  --color-bg: #faf5ff;
+  --color-surface: #ffffff;
+  --color-text: #4c1d95;
+  --color-select: #e9d5ff;
+  --color-accent: #7c3aed;
+  --color-primary: var(--color-accent);
+  --color-character: #a855f7;
+  --color-border: rgba(124, 58, 237, 0.15);
+  
+  --font-sans: 'Outfit', system-ui, -apple-system, sans-serif;
+}
+
+/* 5 Curated Color Themes */
+/* 0. Sunset Warmth */
+body.theme-0 {
+  --color-bg: #fffbeb;
+  --color-surface: #ffffff;
+  --color-text: #78350f;
+  --color-select: #fcd34d;
+  --color-accent: #d97706;
+  --color-character: #fbbf24;
+  --color-border: rgba(217, 119, 6, 0.15);
+}
+
+/* 1. Cyber Neon (Dark Mode) */
+body.theme-1 {
+  --color-bg: #0f172a;
+  --color-surface: #1e293b;
+  --color-text: #f1f5f9;
+  --color-select: #f43f5e;
+  --color-accent: #06b6d4;
+  --color-character: #ec4899;
+  --color-border: rgba(6, 182, 212, 0.2);
+}
+
+/* 2. Emerald Mint */
+body.theme-2 {
+  --color-bg: #f0fdf4;
+  --color-surface: #ffffff;
+  --color-text: #14532d;
+  --color-select: #86efac;
+  --color-accent: #16a34a;
+  --color-character: #4ade80;
+  --color-border: rgba(22, 163, 74, 0.15);
+}
+
+/* 3. Ocean Breeze */
+body.theme-3 {
+  --color-bg: #f0f9ff;
+  --color-surface: #ffffff;
+  --color-text: #0c4a6e;
+  --color-select: #7dd3fc;
+  --color-accent: #0284c7;
+  --color-character: #38bdf8;
+  --color-border: rgba(2, 132, 199, 0.15);
+}
+
+/* 4. Grape Lavender */
+body.theme-4 {
+  --color-bg: #faf5ff;
+  --color-surface: #ffffff;
+  --color-text: #4c1d95;
+  --color-select: #e9d5ff;
+  --color-accent: #7c3aed;
+  --color-character: #c084fc;
+  --color-border: rgba(124, 58, 237, 0.15);
+}
+
+/* Global Styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  transition: background-color 0.5s ease, color 0.5s ease;
+  overflow: hidden;
+  user-select: none;
+  -webkit-user-select: none;
+  height: 100dvh; /* Use dynamic viewport height */
+}
+
+#app {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100dvh;
+  position: relative;
+}
+
+/* Micro-animations */
+@keyframes jiggle {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.08); }
+  100% { transform: scale(1); }
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+  100% { transform: translateY(0px); }
+}
+
+@keyframes timeover-shake {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  20%, 60% { transform: translate(-4px, 2px) rotate(-2deg); }
+  40%, 80% { transform: translate(4px, -2px) rotate(2deg); }
+}
+
+/* Utility Animations */
+.animate-jiggle {
+  animation: jiggle 0.15s infinite ease-in-out;
+}
+
+.animate-float {
+  animation: float 3s infinite ease-in-out;
+}
+
+.animate-shake {
+  animation: timeover-shake 0.3s infinite ease-in-out;
+}
+
+/* Responsive Scaling for KakaoTalk In-App Browser */
+@media (max-width: 480px) {
+  body {
+    font-size: 14px;
+  }
+}
+
+/* Bulletproof Responsive Scaling (Galaxy Fold & Mobile Address Bar optimized) */
+
+/* 1. Shrink letter-boxes reactively based on viewport width to prevent horizontal overflow */
+.letters-row {
+  display: flex;
+  justify-content: center;
+  gap: 4px !important;
+  flex-wrap: nowrap !important; /* Prevent wrapping */
+  width: 100%;
+}
+
+.letter-box {
+  flex: 1 1 0%;
+  width: auto !important; /* Overrides fixed width */
+  max-width: 36px !important;
+  min-width: 20px !important;
+  height: clamp(34px, 9vh, 44px) !important;
+}
+
+.char {
+  font-size: clamp(0.95rem, 4vh, 1.25rem) !important;
+}
+
+/* 2. Scale Mascot down on extremely narrow devices (e.g. Galaxy Fold Outer Screen) */
+@media (max-width: 380px) {
+  .mascot-container {
+    width: 70px !important;
+    height: 80px !important;
+  }
+  .book-mascot {
+    width: 60px !important;
+    height: 66px !important;
+  }
+  .input-bubble {
+    font-size: 0.85rem !important;
+    padding: 4px 8px !important;
+    border-width: 2px !important;
+  }
+  .game-layout {
+    padding: 8px 10px !important;
+    gap: 8px !important;
+  }
+  .grid-container {
+    max-width: 270px !important; /* Shrink grid horizontally to fit Fold 5 outer screen */
+  }
+}
+
+/* 3. General mobile height-responsive rules */
+@media (max-height: 840px) {
+  .game-layout {
+    gap: 8px !important;
+    padding: 8px 12px !important;
+  }
+  .quiz-info-section {
+    gap: 8px !important;
+  }
+  .mascot-container {
+    width: 110px !important;
+    height: 130px !important;
+  }
+  .book-mascot {
+    width: 90px !important;
+    height: 100px !important;
+  }
+  .question-cloud {
+    padding: 6px 12px !important;
+    border-radius: 12px !important;
+  }
+  .cloud-tail {
+    width: 14px !important;
+    height: 10px !important;
+    bottom: -9px !important;
+    left: 18px !important;
+  }
+  .question-text {
+    font-size: 1.1rem !important;
+  }
+  .word-panel {
+    padding: 8px 12px !important;
+    gap: 6px !important;
+  }
+  .grid-container {
+    max-width: 310px !important;
+  }
+}
+
+/* 4. Extreme short viewport height rules */
+@media (max-height: 720px) {
+  .mascot-container {
+    width: 60px !important;
+    height: 70px !important;
+  }
+  .book-mascot {
+    width: 50px !important;
+    height: 55px !important;
+  }
+  .input-bubble {
+    font-size: 0.85rem !important;
+    padding: 4px 8px !important;
+    border-width: 2px !important;
+  }
+  .grid-container {
+    max-width: 310px !important;
+  }
+}

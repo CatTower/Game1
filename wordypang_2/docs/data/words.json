@@ -1,0 +1,1497 @@
+[
+  {
+    "word": "ANT",
+    "meaning": "개미",
+    "level": "easy"
+  },
+  {
+    "word": "BAG",
+    "meaning": "가방",
+    "level": "easy"
+  },
+  {
+    "word": "BEAR",
+    "meaning": "곰",
+    "level": "easy"
+  },
+  {
+    "word": "BIRD",
+    "meaning": "새",
+    "level": "easy"
+  },
+  {
+    "word": "BOOK",
+    "meaning": "책",
+    "level": "easy"
+  },
+  {
+    "word": "BOX",
+    "meaning": "상자",
+    "level": "easy"
+  },
+  {
+    "word": "BOY",
+    "meaning": "소년",
+    "level": "easy"
+  },
+  {
+    "word": "BUS",
+    "meaning": "버스",
+    "level": "easy"
+  },
+  {
+    "word": "CAKE",
+    "meaning": "케이크",
+    "level": "easy"
+  },
+  {
+    "word": "CAP",
+    "meaning": "모자",
+    "level": "easy"
+  },
+  {
+    "word": "CAR",
+    "meaning": "자동차",
+    "level": "easy"
+  },
+  {
+    "word": "CAT",
+    "meaning": "고양이",
+    "level": "easy"
+  },
+  {
+    "word": "COAT",
+    "meaning": "코트",
+    "level": "easy"
+  },
+  {
+    "word": "COW",
+    "meaning": "젖소",
+    "level": "easy"
+  },
+  {
+    "word": "CUP",
+    "meaning": "컵",
+    "level": "easy"
+  },
+  {
+    "word": "DESK",
+    "meaning": "책상",
+    "level": "easy"
+  },
+  {
+    "word": "DOG",
+    "meaning": "개",
+    "level": "easy"
+  },
+  {
+    "word": "DOLL",
+    "meaning": "인형",
+    "level": "easy"
+  },
+  {
+    "word": "DUCK",
+    "meaning": "오리",
+    "level": "easy"
+  },
+  {
+    "word": "EAR",
+    "meaning": "귀",
+    "level": "easy"
+  },
+  {
+    "word": "EGG",
+    "meaning": "달걀",
+    "level": "easy"
+  },
+  {
+    "word": "EYE",
+    "meaning": "눈",
+    "level": "easy"
+  },
+  {
+    "word": "FISH",
+    "meaning": "물고기",
+    "level": "easy"
+  },
+  {
+    "word": "FOX",
+    "meaning": "여우",
+    "level": "easy"
+  },
+  {
+    "word": "FROG",
+    "meaning": "개구리",
+    "level": "easy"
+  },
+  {
+    "word": "GAME",
+    "meaning": "게임",
+    "level": "easy"
+  },
+  {
+    "word": "GIRL",
+    "meaning": "소녀",
+    "level": "easy"
+  },
+  {
+    "word": "GOAT",
+    "meaning": "염소",
+    "level": "easy"
+  },
+  {
+    "word": "HAIR",
+    "meaning": "머리카락",
+    "level": "easy"
+  },
+  {
+    "word": "HAND",
+    "meaning": "손",
+    "level": "easy"
+  },
+  {
+    "word": "HAT",
+    "meaning": "모자",
+    "level": "easy"
+  },
+  {
+    "word": "HOME",
+    "meaning": "집",
+    "level": "easy"
+  },
+  {
+    "word": "ICE",
+    "meaning": "얼음",
+    "level": "easy"
+  },
+  {
+    "word": "KING",
+    "meaning": "왕",
+    "level": "easy"
+  },
+  {
+    "word": "LION",
+    "meaning": "사자",
+    "level": "easy"
+  },
+  {
+    "word": "MILK",
+    "meaning": "우유",
+    "level": "easy"
+  },
+  {
+    "word": "MOON",
+    "meaning": "달",
+    "level": "easy"
+  },
+  {
+    "word": "NOSE",
+    "meaning": "코",
+    "level": "easy"
+  },
+  {
+    "word": "PIG",
+    "meaning": "돼지",
+    "level": "easy"
+  },
+  {
+    "word": "RAIN",
+    "meaning": "비",
+    "level": "easy"
+  },
+  {
+    "word": "RING",
+    "meaning": "반지",
+    "level": "easy"
+  },
+  {
+    "word": "ROSE",
+    "meaning": "장미",
+    "level": "easy"
+  },
+  {
+    "word": "SHIP",
+    "meaning": "배",
+    "level": "easy"
+  },
+  {
+    "word": "SHOE",
+    "meaning": "신발",
+    "level": "easy"
+  },
+  {
+    "word": "SNOW",
+    "meaning": "눈",
+    "level": "easy"
+  },
+  {
+    "word": "STAR",
+    "meaning": "별",
+    "level": "easy"
+  },
+  {
+    "word": "SUN",
+    "meaning": "태양",
+    "level": "easy"
+  },
+  {
+    "word": "TOY",
+    "meaning": "장난감",
+    "level": "easy"
+  },
+  {
+    "word": "TREE",
+    "meaning": "나무",
+    "level": "easy"
+  },
+  {
+    "word": "WIND",
+    "meaning": "바람",
+    "level": "easy"
+  },
+  {
+    "word": "BALL",
+    "meaning": "공",
+    "level": "easy"
+  },
+  {
+    "word": "BELL",
+    "meaning": "종",
+    "level": "easy"
+  },
+  {
+    "word": "BOAT",
+    "meaning": "보트",
+    "level": "easy"
+  },
+  {
+    "word": "BOWL",
+    "meaning": "사발",
+    "level": "easy"
+  },
+  {
+    "word": "CARD",
+    "meaning": "카드",
+    "level": "easy"
+  },
+  {
+    "word": "CLAY",
+    "meaning": "점토",
+    "level": "easy"
+  },
+  {
+    "word": "COLD",
+    "meaning": "추운",
+    "level": "easy"
+  },
+  {
+    "word": "COOK",
+    "meaning": "요리사",
+    "level": "easy"
+  },
+  {
+    "word": "DEER",
+    "meaning": "사슴",
+    "level": "easy"
+  },
+  {
+    "word": "DOOR",
+    "meaning": "문",
+    "level": "easy"
+  },
+  {
+    "word": "DRUM",
+    "meaning": "드럼",
+    "level": "easy"
+  },
+  {
+    "word": "DUST",
+    "meaning": "먼지",
+    "level": "easy"
+  },
+  {
+    "word": "EAST",
+    "meaning": "동쪽",
+    "level": "easy"
+  },
+  {
+    "word": "FACE",
+    "meaning": "얼굴",
+    "level": "easy"
+  },
+  {
+    "word": "FARM",
+    "meaning": "농장",
+    "level": "easy"
+  },
+  {
+    "word": "FEET",
+    "meaning": "발",
+    "level": "easy"
+  },
+  {
+    "word": "FIRE",
+    "meaning": "불",
+    "level": "easy"
+  },
+  {
+    "word": "FLAG",
+    "meaning": "깃발",
+    "level": "easy"
+  },
+  {
+    "word": "FOOD",
+    "meaning": "음식",
+    "level": "easy"
+  },
+  {
+    "word": "FOOT",
+    "meaning": "발",
+    "level": "easy"
+  },
+  {
+    "word": "GATE",
+    "meaning": "문",
+    "level": "easy"
+  },
+  {
+    "word": "GOLD",
+    "meaning": "금",
+    "level": "easy"
+  },
+  {
+    "word": "HILL",
+    "meaning": "언덕",
+    "level": "easy"
+  },
+  {
+    "word": "HOSE",
+    "meaning": "호스",
+    "level": "easy"
+  },
+  {
+    "word": "JEEP",
+    "meaning": "지프차",
+    "level": "easy"
+  },
+  {
+    "word": "JUMP",
+    "meaning": "점프",
+    "level": "easy"
+  },
+  {
+    "word": "KITE",
+    "meaning": "연",
+    "level": "easy"
+  },
+  {
+    "word": "LADY",
+    "meaning": "숙녀",
+    "level": "easy"
+  },
+  {
+    "word": "LAKE",
+    "meaning": "호수",
+    "level": "easy"
+  },
+  {
+    "word": "LEAF",
+    "meaning": "나뭇잎",
+    "level": "easy"
+  },
+  {
+    "word": "MAP",
+    "meaning": "지도",
+    "level": "easy"
+  },
+  {
+    "word": "NEST",
+    "meaning": "둥지",
+    "level": "easy"
+  },
+  {
+    "word": "NET",
+    "meaning": "그물",
+    "level": "easy"
+  },
+  {
+    "word": "NOTE",
+    "meaning": "노트",
+    "level": "easy"
+  },
+  {
+    "word": "OVEN",
+    "meaning": "오븐",
+    "level": "easy"
+  },
+  {
+    "word": "PARK",
+    "meaning": "공원",
+    "level": "easy"
+  },
+  {
+    "word": "PEAR",
+    "meaning": "배",
+    "level": "easy"
+  },
+  {
+    "word": "POND",
+    "meaning": "연못",
+    "level": "easy"
+  },
+  {
+    "word": "POOL",
+    "meaning": "풀장",
+    "level": "easy"
+  },
+  {
+    "word": "ROAD",
+    "meaning": "길",
+    "level": "easy"
+  },
+  {
+    "word": "ROOF",
+    "meaning": "지붕",
+    "level": "easy"
+  },
+  {
+    "word": "ROPE",
+    "meaning": "밧줄",
+    "level": "easy"
+  },
+  {
+    "word": "SALT",
+    "meaning": "소금",
+    "level": "easy"
+  },
+  {
+    "word": "SAND",
+    "meaning": "모래",
+    "level": "easy"
+  },
+  {
+    "word": "SEED",
+    "meaning": "씨앗",
+    "level": "easy"
+  },
+  {
+    "word": "SOAP",
+    "meaning": "비누",
+    "level": "easy"
+  },
+  {
+    "word": "SOUP",
+    "meaning": "스프",
+    "level": "easy"
+  },
+  {
+    "word": "TENT",
+    "meaning": "텐트",
+    "level": "easy"
+  },
+  {
+    "word": "WALL",
+    "meaning": "벽",
+    "level": "easy"
+  },
+  {
+    "word": "ZOO",
+    "meaning": "동물원",
+    "level": "easy"
+  },
+  {
+    "word": "APPLE",
+    "meaning": "사과",
+    "level": "normal"
+  },
+  {
+    "word": "BANANA",
+    "meaning": "바나나",
+    "level": "normal"
+  },
+  {
+    "word": "ORANGE",
+    "meaning": "오렌지",
+    "level": "normal"
+  },
+  {
+    "word": "MELON",
+    "meaning": "멜론",
+    "level": "normal"
+  },
+  {
+    "word": "GRAPE",
+    "meaning": "포도",
+    "level": "normal"
+  },
+  {
+    "word": "LEMON",
+    "meaning": "레몬",
+    "level": "normal"
+  },
+  {
+    "word": "POTATO",
+    "meaning": "감자",
+    "level": "normal"
+  },
+  {
+    "word": "TOMATO",
+    "meaning": "토마토",
+    "level": "normal"
+  },
+  {
+    "word": "CARROT",
+    "meaning": "당근",
+    "level": "normal"
+  },
+  {
+    "word": "ONION",
+    "meaning": "양파",
+    "level": "normal"
+  },
+  {
+    "word": "CHEESE",
+    "meaning": "치즈",
+    "level": "normal"
+  },
+  {
+    "word": "BUTTER",
+    "meaning": "버터",
+    "level": "normal"
+  },
+  {
+    "word": "BREAD",
+    "meaning": "빵",
+    "level": "normal"
+  },
+  {
+    "word": "COOKIE",
+    "meaning": "쿠키",
+    "level": "normal"
+  },
+  {
+    "word": "FLOWER",
+    "meaning": "꽃",
+    "level": "normal"
+  },
+  {
+    "word": "FOREST",
+    "meaning": "숲",
+    "level": "normal"
+  },
+  {
+    "word": "GARDEN",
+    "meaning": "정원",
+    "level": "normal"
+  },
+  {
+    "word": "RIVER",
+    "meaning": "강",
+    "level": "normal"
+  },
+  {
+    "word": "OCEAN",
+    "meaning": "바다",
+    "level": "normal"
+  },
+  {
+    "word": "VALLEY",
+    "meaning": "계곡",
+    "level": "normal"
+  },
+  {
+    "word": "BRIDGE",
+    "meaning": "다리",
+    "level": "normal"
+  },
+  {
+    "word": "STREET",
+    "meaning": "거리",
+    "level": "normal"
+  },
+  {
+    "word": "MARKET",
+    "meaning": "시장",
+    "level": "normal"
+  },
+  {
+    "word": "SCHOOL",
+    "meaning": "학교",
+    "level": "normal"
+  },
+  {
+    "word": "CLASS",
+    "meaning": "교실",
+    "level": "normal"
+  },
+  {
+    "word": "TEACHER",
+    "meaning": "교사",
+    "level": "normal"
+  },
+  {
+    "word": "STUDENT",
+    "meaning": "학생",
+    "level": "normal"
+  },
+  {
+    "word": "FRIEND",
+    "meaning": "친구",
+    "level": "normal"
+  },
+  {
+    "word": "FAMILY",
+    "meaning": "가족",
+    "level": "normal"
+  },
+  {
+    "word": "FATHER",
+    "meaning": "아버지",
+    "level": "normal"
+  },
+  {
+    "word": "MOTHER",
+    "meaning": "어머니",
+    "level": "normal"
+  },
+  {
+    "word": "BROTHER",
+    "meaning": "형제",
+    "level": "normal"
+  },
+  {
+    "word": "SISTER",
+    "meaning": "자매",
+    "level": "normal"
+  },
+  {
+    "word": "COUSIN",
+    "meaning": "사촌",
+    "level": "normal"
+  },
+  {
+    "word": "UNCLE",
+    "meaning": "삼촌",
+    "level": "normal"
+  },
+  {
+    "word": "ANIMAL",
+    "meaning": "동물",
+    "level": "normal"
+  },
+  {
+    "word": "MONKEY",
+    "meaning": "원숭이",
+    "level": "normal"
+  },
+  {
+    "word": "RABBIT",
+    "meaning": "토끼",
+    "level": "normal"
+  },
+  {
+    "word": "HORSE",
+    "meaning": "말",
+    "level": "normal"
+  },
+  {
+    "word": "SHEEP",
+    "meaning": "양",
+    "level": "normal"
+  },
+  {
+    "word": "MOUSE",
+    "meaning": "생쥐",
+    "level": "normal"
+  },
+  {
+    "word": "SPIDER",
+    "meaning": "거미",
+    "level": "normal"
+  },
+  {
+    "word": "CAMERA",
+    "meaning": "카메라",
+    "level": "normal"
+  },
+  {
+    "word": "RADIO",
+    "meaning": "라디오",
+    "level": "normal"
+  },
+  {
+    "word": "CLOCK",
+    "meaning": "시계",
+    "level": "normal"
+  },
+  {
+    "word": "MIRROR",
+    "meaning": "거울",
+    "level": "normal"
+  },
+  {
+    "word": "WINDOW",
+    "meaning": "창문",
+    "level": "normal"
+  },
+  {
+    "word": "PILLOW",
+    "meaning": "베개",
+    "level": "normal"
+  },
+  {
+    "word": "PENCIL",
+    "meaning": "연필",
+    "level": "normal"
+  },
+  {
+    "word": "ERASER",
+    "meaning": "지우개",
+    "level": "normal"
+  },
+  {
+    "word": "ADVICE",
+    "meaning": "조언",
+    "level": "normal"
+  },
+  {
+    "word": "AUTUMN",
+    "meaning": "가을",
+    "level": "normal"
+  },
+  {
+    "word": "BEAUTY",
+    "meaning": "미(美)",
+    "level": "normal"
+  },
+  {
+    "word": "BEHAVE",
+    "meaning": "행동하다",
+    "level": "normal"
+  },
+  {
+    "word": "BOTTLE",
+    "meaning": "병",
+    "level": "normal"
+  },
+  {
+    "word": "BRAVE",
+    "meaning": "용감한",
+    "level": "normal"
+  },
+  {
+    "word": "BRIGHT",
+    "meaning": "밝은",
+    "level": "normal"
+  },
+  {
+    "word": "BREEZE",
+    "meaning": "산들바람",
+    "level": "normal"
+  },
+  {
+    "word": "BUCKET",
+    "meaning": "양동이",
+    "level": "normal"
+  },
+  {
+    "word": "CANDLE",
+    "meaning": "양초",
+    "level": "normal"
+  },
+  {
+    "word": "CARPET",
+    "meaning": "양단",
+    "level": "normal"
+  },
+  {
+    "word": "CHANCE",
+    "meaning": "기회",
+    "level": "normal"
+  },
+  {
+    "word": "CHURCH",
+    "meaning": "교회",
+    "level": "normal"
+  },
+  {
+    "word": "CLEVER",
+    "meaning": "영리한",
+    "level": "normal"
+  },
+  {
+    "word": "CLOSET",
+    "meaning": "옷장",
+    "level": "normal"
+  },
+  {
+    "word": "CORNER",
+    "meaning": "모퉁이",
+    "level": "normal"
+  },
+  {
+    "word": "COTTON",
+    "meaning": "면화",
+    "level": "normal"
+  },
+  {
+    "word": "CRADLE",
+    "meaning": "요람",
+    "level": "normal"
+  },
+  {
+    "word": "DANGER",
+    "meaning": "위험",
+    "level": "normal"
+  },
+  {
+    "word": "DOCTOR",
+    "meaning": "의사",
+    "level": "normal"
+  },
+  {
+    "word": "DREAMS",
+    "meaning": "꿈",
+    "level": "normal"
+  },
+  {
+    "word": "ENGINE",
+    "meaning": "엔진",
+    "level": "normal"
+  },
+  {
+    "word": "ENERGY",
+    "meaning": "에너지",
+    "level": "normal"
+  },
+  {
+    "word": "ESCAPE",
+    "meaning": "탈출",
+    "level": "normal"
+  },
+  {
+    "word": "FAMOUS",
+    "meaning": "유명한",
+    "level": "normal"
+  },
+  {
+    "word": "FLIGHT",
+    "meaning": "비행",
+    "level": "normal"
+  },
+  {
+    "word": "FUTURE",
+    "meaning": "미래",
+    "level": "normal"
+  },
+  {
+    "word": "GARAGE",
+    "meaning": "차고",
+    "level": "normal"
+  },
+  {
+    "word": "GENTLE",
+    "meaning": "온화한",
+    "level": "normal"
+  },
+  {
+    "word": "GUITAR",
+    "meaning": "기타",
+    "level": "normal"
+  },
+  {
+    "word": "HAMMER",
+    "meaning": "망치",
+    "level": "normal"
+  },
+  {
+    "word": "HARBOR",
+    "meaning": "항구",
+    "level": "normal"
+  },
+  {
+    "word": "ISLAND",
+    "meaning": "섬",
+    "level": "normal"
+  },
+  {
+    "word": "KETTLE",
+    "meaning": "주전자",
+    "level": "normal"
+  },
+  {
+    "word": "KITTEN",
+    "meaning": "새끼고양이",
+    "level": "normal"
+  },
+  {
+    "word": "LADDER",
+    "meaning": "사다리",
+    "level": "normal"
+  },
+  {
+    "word": "LANTERN",
+    "meaning": "랜턴",
+    "level": "normal"
+  },
+  {
+    "word": "LIQUID",
+    "meaning": "액체",
+    "level": "normal"
+  },
+  {
+    "word": "MAGIC",
+    "meaning": "마술",
+    "level": "normal"
+  },
+  {
+    "word": "MAGNET",
+    "meaning": "자석",
+    "level": "normal"
+  },
+  {
+    "word": "MONSTER",
+    "meaning": "괴물",
+    "level": "normal"
+  },
+  {
+    "word": "MUSEUM",
+    "meaning": "박물관",
+    "level": "normal"
+  },
+  {
+    "word": "NATION",
+    "meaning": "국가",
+    "level": "normal"
+  },
+  {
+    "word": "NATURE",
+    "meaning": "자연",
+    "level": "normal"
+  },
+  {
+    "word": "NEPHEW",
+    "meaning": "조카",
+    "level": "normal"
+  },
+  {
+    "word": "OXYGEN",
+    "meaning": "산소",
+    "level": "normal"
+  },
+  {
+    "word": "PALACE",
+    "meaning": "궁전",
+    "level": "normal"
+  },
+  {
+    "word": "POCKET",
+    "meaning": "주머니",
+    "level": "normal"
+  },
+  {
+    "word": "POSTER",
+    "meaning": "포스터",
+    "level": "normal"
+  },
+  {
+    "word": "PUZZLE",
+    "meaning": "퍼즐",
+    "level": "normal"
+  },
+  {
+    "word": "ACCENT",
+    "meaning": "악센트",
+    "level": "hard"
+  },
+  {
+    "word": "SYSTEM",
+    "meaning": "시스템",
+    "level": "hard"
+  },
+  {
+    "word": "PROJECT",
+    "meaning": "프로젝트",
+    "level": "hard"
+  },
+  {
+    "word": "CONTEXT",
+    "meaning": "맥락",
+    "level": "hard"
+  },
+  {
+    "word": "LIBERTY",
+    "meaning": "자유",
+    "level": "hard"
+  },
+  {
+    "word": "JUSTICE",
+    "meaning": "정의",
+    "level": "hard"
+  },
+  {
+    "word": "WISDOM",
+    "meaning": "지혜",
+    "level": "hard"
+  },
+  {
+    "word": "GLORY",
+    "meaning": "영광",
+    "level": "hard"
+  },
+  {
+    "word": "HARMONY",
+    "meaning": "조화",
+    "level": "hard"
+  },
+  {
+    "word": "VICTORY",
+    "meaning": "승리",
+    "level": "hard"
+  },
+  {
+    "word": "HONESTY",
+    "meaning": "정직",
+    "level": "hard"
+  },
+  {
+    "word": "PATIENT",
+    "meaning": "인내하는",
+    "level": "hard"
+  },
+  {
+    "word": "CULTURE",
+    "meaning": "문화",
+    "level": "hard"
+  },
+  {
+    "word": "SOCIETY",
+    "meaning": "사회",
+    "level": "hard"
+  },
+  {
+    "word": "SCIENCE",
+    "meaning": "과학",
+    "level": "hard"
+  },
+  {
+    "word": "PHYSICS",
+    "meaning": "물리학",
+    "level": "hard"
+  },
+  {
+    "word": "COMPLEX",
+    "meaning": "복잡한",
+    "level": "hard"
+  },
+  {
+    "word": "PREVENT",
+    "meaning": "예방하다",
+    "level": "hard"
+  },
+  {
+    "word": "IMPROVE",
+    "meaning": "개선하다",
+    "level": "hard"
+  },
+  {
+    "word": "ABILITY",
+    "meaning": "능력",
+    "level": "hard"
+  },
+  {
+    "word": "ACADEMY",
+    "meaning": "한림원",
+    "level": "hard"
+  },
+  {
+    "word": "ACQUIRE",
+    "meaning": "획득하다",
+    "level": "hard"
+  },
+  {
+    "word": "ADDRESS",
+    "meaning": "연설하다",
+    "level": "hard"
+  },
+  {
+    "word": "ANALYZE",
+    "meaning": "분석하다",
+    "level": "hard"
+  },
+  {
+    "word": "ANXIETY",
+    "meaning": "불안",
+    "level": "hard"
+  },
+  {
+    "word": "ARCHIVE",
+    "meaning": "기록소",
+    "level": "hard"
+  },
+  {
+    "word": "ATTEMPT",
+    "meaning": "시도하다",
+    "level": "hard"
+  },
+  {
+    "word": "ATTRACT",
+    "meaning": "끌어당기다",
+    "level": "hard"
+  },
+  {
+    "word": "BALANCE",
+    "meaning": "균형",
+    "level": "hard"
+  },
+  {
+    "word": "BARRIER",
+    "meaning": "장벽",
+    "level": "hard"
+  },
+  {
+    "word": "BENEFIT",
+    "meaning": "이익",
+    "level": "hard"
+  },
+  {
+    "word": "BLOSSOM",
+    "meaning": "꽃이 피다",
+    "level": "hard"
+  },
+  {
+    "word": "CHARITY",
+    "meaning": "자선",
+    "level": "hard"
+  },
+  {
+    "word": "CLIMATE",
+    "meaning": "기후",
+    "level": "hard"
+  },
+  {
+    "word": "CONFIRM",
+    "meaning": "확인하다",
+    "level": "hard"
+  },
+  {
+    "word": "CONSUME",
+    "meaning": "소비하다",
+    "level": "hard"
+  },
+  {
+    "word": "DECLARE",
+    "meaning": "선언하다",
+    "level": "hard"
+  },
+  {
+    "word": "DEFENSE",
+    "meaning": "방어",
+    "level": "hard"
+  },
+  {
+    "word": "DELIVER",
+    "meaning": "배달하다",
+    "level": "hard"
+  },
+  {
+    "word": "DESPITE",
+    "meaning": "불구하고",
+    "level": "hard"
+  },
+  {
+    "word": "DESTINY",
+    "meaning": "운명",
+    "level": "hard"
+  },
+  {
+    "word": "DEVELOP",
+    "meaning": "개발하다",
+    "level": "hard"
+  },
+  {
+    "word": "DIGNITY",
+    "meaning": "존엄",
+    "level": "hard"
+  },
+  {
+    "word": "DISMISS",
+    "meaning": "해고하다",
+    "level": "hard"
+  },
+  {
+    "word": "DISPLAY",
+    "meaning": "전시하다",
+    "level": "hard"
+  },
+  {
+    "word": "DIVORCE",
+    "meaning": "이혼",
+    "level": "hard"
+  },
+  {
+    "word": "DIVERSE",
+    "meaning": "다양한",
+    "level": "hard"
+  },
+  {
+    "word": "DYNAMIC",
+    "meaning": "역동적인",
+    "level": "hard"
+  },
+  {
+    "word": "ECONOMY",
+    "meaning": "경제",
+    "level": "hard"
+  },
+  {
+    "word": "ELEMENT",
+    "meaning": "요소",
+    "level": "hard"
+  },
+  {
+    "word": "EMBRACE",
+    "meaning": "포용하다",
+    "level": "hard"
+  },
+  {
+    "word": "EMOTION",
+    "meaning": "감정",
+    "level": "hard"
+  },
+  {
+    "word": "EMPHASIS",
+    "meaning": "강조",
+    "level": "hard"
+  },
+  {
+    "word": "ETHICAL",
+    "meaning": "윤리적인",
+    "level": "hard"
+  },
+  {
+    "word": "EXHIBIT",
+    "meaning": "전시하다",
+    "level": "hard"
+  },
+  {
+    "word": "FANTASY",
+    "meaning": "공상",
+    "level": "hard"
+  },
+  {
+    "word": "FEDERAL",
+    "meaning": "연방의",
+    "level": "hard"
+  },
+  {
+    "word": "FORMULA",
+    "meaning": "공식",
+    "level": "hard"
+  },
+  {
+    "word": "GENUINE",
+    "meaning": "진짜의",
+    "level": "hard"
+  },
+  {
+    "word": "GESTURE",
+    "meaning": "몸짓",
+    "level": "hard"
+  },
+  {
+    "word": "GODDESS",
+    "meaning": "여신",
+    "level": "hard"
+  },
+  {
+    "word": "GRAVITY",
+    "meaning": "중력",
+    "level": "hard"
+  },
+  {
+    "word": "HEROIC",
+    "meaning": "영웅적인",
+    "level": "hard"
+  },
+  {
+    "word": "HORIZON",
+    "meaning": "지평선",
+    "level": "hard"
+  },
+  {
+    "word": "IMPULSE",
+    "meaning": "충동",
+    "level": "hard"
+  },
+  {
+    "word": "INSPIRE",
+    "meaning": "영감주다",
+    "level": "hard"
+  },
+  {
+    "word": "INSTANT",
+    "meaning": "즉각적인",
+    "level": "hard"
+  },
+  {
+    "word": "KINSHIP",
+    "meaning": "친족관계",
+    "level": "hard"
+  },
+  {
+    "word": "LAWSUIT",
+    "meaning": "소송",
+    "level": "hard"
+  },
+  {
+    "word": "LECTURE",
+    "meaning": "강의",
+    "level": "hard"
+  },
+  {
+    "word": "LOGICAL",
+    "meaning": "논리적인",
+    "level": "hard"
+  },
+  {
+    "word": "LOYALTY",
+    "meaning": "충성",
+    "level": "hard"
+  },
+  {
+    "word": "MAJESTY",
+    "meaning": "위엄",
+    "level": "hard"
+  },
+  {
+    "word": "MEASURE",
+    "meaning": "측정하다",
+    "level": "hard"
+  },
+  {
+    "word": "MIRACLE",
+    "meaning": "기적",
+    "level": "hard"
+  },
+  {
+    "word": "MYSTERY",
+    "meaning": "신비",
+    "level": "hard"
+  },
+  {
+    "word": "NEGLECT",
+    "meaning": "방치하다",
+    "level": "hard"
+  },
+  {
+    "word": "NETWORK",
+    "meaning": "네트워크",
+    "level": "hard"
+  },
+  {
+    "word": "OBSTACLE",
+    "meaning": "장애물",
+    "level": "hard"
+  },
+  {
+    "word": "OPINION",
+    "meaning": "의견",
+    "level": "hard"
+  },
+  {
+    "word": "PASSAGE",
+    "meaning": "통로",
+    "level": "hard"
+  },
+  {
+    "word": "PASSION",
+    "meaning": "열정",
+    "level": "hard"
+  },
+  {
+    "word": "PIONEER",
+    "meaning": "개척자",
+    "level": "hard"
+  },
+  {
+    "word": "PLASTIC",
+    "meaning": "플라스틱",
+    "level": "hard"
+  },
+  {
+    "word": "PRECISE",
+    "meaning": "정밀한",
+    "level": "hard"
+  },
+  {
+    "word": "PRIMARY",
+    "meaning": "기본의",
+    "level": "hard"
+  },
+  {
+    "word": "PRIVACY",
+    "meaning": "사생활",
+    "level": "hard"
+  },
+  {
+    "word": "PROCESS",
+    "meaning": "과정",
+    "level": "hard"
+  },
+  {
+    "word": "PROFILE",
+    "meaning": "개요",
+    "level": "hard"
+  },
+  {
+    "word": "REALITY",
+    "meaning": "현실",
+    "level": "hard"
+  },
+  {
+    "word": "REFLECT",
+    "meaning": "반사하다",
+    "level": "hard"
+  },
+  {
+    "word": "REVOLVE",
+    "meaning": "공전하다",
+    "level": "hard"
+  },
+  {
+    "word": "SCANDAL",
+    "meaning": "추문",
+    "level": "hard"
+  },
+  {
+    "word": "SHATTER",
+    "meaning": "산산조각",
+    "level": "hard"
+  },
+  {
+    "word": "SHELTER",
+    "meaning": "피난처",
+    "level": "hard"
+  },
+  {
+    "word": "SILENCE",
+    "meaning": "침묵",
+    "level": "hard"
+  },
+  {
+    "word": "SPECIES",
+    "meaning": "종(생물)",
+    "level": "hard"
+  },
+  {
+    "word": "STRETCH",
+    "meaning": "늘이다",
+    "level": "hard"
+  },
+  {
+    "word": "TENSION",
+    "meaning": "긴장",
+    "level": "hard"
+  }
+]
