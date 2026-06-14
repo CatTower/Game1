@@ -234,14 +234,23 @@ class GameStore {
     this.selectedString = this.selectedString.slice(0, -1);
   }
 
-  // Web Speech API TTS helper for pronunciation
   speakWord(word: string) {
     if (typeof window !== 'undefined' && 'speechSynthesis' in window) {
       try {
-        window.speechSynthesis.cancel();
+        if (window.speechSynthesis.speaking) {
+          window.speechSynthesis.cancel();
+        }
         const utterance = new SpeechSynthesisUtterance(word);
         utterance.lang = 'en-US';
         utterance.rate = 0.85; // Clearer for students
+        
+        // Force English voice to avoid weird default accents
+        const voices = window.speechSynthesis.getVoices();
+        const enVoice = voices.find(v => v.lang.startsWith('en-US') || v.lang.startsWith('en'));
+        if (enVoice) {
+          utterance.voice = enVoice;
+        }
+
         window.speechSynthesis.speak(utterance);
       } catch (e) {
         console.warn('TTS Speech synthesis failed:', e);

@@ -26,10 +26,19 @@
   // Native Web Speech Synthesis (TTS)
   function speak(text: string) {
     if ('speechSynthesis' in window) {
-      window.speechSynthesis.cancel(); // cancel any ongoing speech
+      if (window.speechSynthesis.speaking) {
+        window.speechSynthesis.cancel();
+      }
       const utterance = new SpeechSynthesisUtterance(text);
       utterance.lang = 'en-US';
       utterance.rate = 0.9;
+      
+      const voices = window.speechSynthesis.getVoices();
+      const enVoice = voices.find(v => v.lang.startsWith('en-US') || v.lang.startsWith('en'));
+      if (enVoice) {
+        utterance.voice = enVoice;
+      }
+      
       window.speechSynthesis.speak(utterance);
     } else {
       console.warn('Speech synthesis not supported in this browser.');
