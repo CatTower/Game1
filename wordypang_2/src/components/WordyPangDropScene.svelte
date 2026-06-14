@@ -5,17 +5,14 @@
 
   // Game configuration
   const SPAWN_INTERVAL = 1500;
-
-  let containerWidth = $state(0);
-  let containerHeight = $state(0);
   
   // State
   let mode = $state<'select'|'playing'|'gameover'>('select');
   let lang = $state<'ko'|'en'>('ko');
   
-  let blocks = $state<{id: number, word: string, hp: number, maxHp: number, x: number, y: number}[]>([]);
-  let projectiles = $state<{id: number, targetId: number, x: number, y: number}[]>([]);
-  let explosions = $state<{id: number, x: number, y: number, time: number}[]>([]);
+  let blocks = $state<{id: number, word: string, hp: number, maxHp: number, x: number, y: number, z: number}[]>([]);
+  let projectiles = $state<{id: number, targetId: number, x: number, y: number, z: number}[]>([]);
+  let explosions = $state<{id: number, x: number, y: number, z: number, time: number}[]>([]);
   
   let score = $state(0);
   let lives = $state(10);
@@ -87,9 +84,10 @@
   function spawnBlock() {
     const word = getRandomWord();
     const hp = word.length;
-    // Keep it within screen bounds
-    const padding = 60;
-    const x = padding + Math.random() * (containerWidth - padding * 2);
+    // Spread widely across X and Y
+    const x = (Math.random() - 0.5) * 1200; 
+    const y = (Math.random() - 0.5) * 800;
+    const z = -4000; // Far away
     
     blocks.push({
       id: blockIdCounter++,
@@ -97,26 +95,27 @@
       hp,
       maxHp: hp,
       x,
-      y: -50
+      y,
+      z
     });
   }
 
-  function triggerExplosion(x: number, y: number) {
-    explosions.push({ id: explIdCounter++, x, y, time: performance.now() });
+  function triggerExplosion(x: number, y: number, z: number) {
+    explosions.push({ id: explIdCounter++, x, y, z, time: performance.now() });
     
-    // Shockwave damage
-    const radius = 100;
+    // Shockwave damage (based on 3D distance)
+    const radius = 600;
     for (let i = blocks.length - 1; i >= 0; i--) {
       const b = blocks[i];
       const dx = b.x - x;
       const dy = b.y - y;
-      const dist = Math.hypot(dx, dy);
+      const dz = b.z - z;
+      const dist = Math.hypot(dx, dy, dz);
       if (dist < radius) {
         b.hp -= 1;
         if (b.hp <= 0) {
           score += b.maxHp * 10;
           blocks.splice(i, 1);
-          // Recursive explosion for combo? Not now as per spec
         }
       }
     }
@@ -126,19 +125,18 @@
     const dt = (timestamp - lastFrameTime) / 1000;
     lastFrameTime = timestamp;
 
-    // Update blocks
+    // Update blocks (moving towards camera, increasing Z)
     for (let i = blocks.length - 1; i >= 0; i--) {
-      // Shorter word = falls faster. E.g. base 80, length 2 = 80, length 6 = 26
-      const fallSpeed = 160 / Math.max(1, blocks[i].word.length);
-      blocks[i].y += fallSpeed * dt;
+      const approachSpeed = 1500 / Math.max(1, blocks[i].word.length);
+      blocks[i].z += approachSpeed * dt;
       
-      if (blocks[i].y > containerHeight - 80) { // Hit bottom
+      if (blocks[i].z > 600) { // Hit screen/camera
         lives -= blocks[i].word.length;
         blocks.splice(i, 1);
         if (lives <= 0) {
           lives = 0;
           gameOver();
-          return; // Stop processing
+          return;
         }
       }
     }
@@ -155,23 +153,23 @@
 
       const dx = target.x - p.x;
       const dy = target.y - p.y;
-      const dist = Math.hypot(dx, dy);
+      const dz = target.z - p.z;
+      const dist = Math.hypot(dx, dy, dz);
       
-      if (dist < 10) {
-        // Hit
-        target.hp = 0; // Instant kill on direct hit
-        triggerExplosion(target.x, target.y);
+      if (dist < 150) { // Collision threshold
+        target.hp = 0;
+        triggerExplosion(target.x, target.y, target.z);
         score += target.maxHp * 10;
         blocks = blocks.filter(b => b.id !== target.id);
         projectiles.splice(i, 1);
       } else {
-        const speed = 500 * dt;
+        const speed = 4000 * dt;
         p.x += (dx / dist) * speed;
         p.y += (dy / dist) * speed;
+        p.z += (dz / dist) * speed;
       }
     }
 
-    // Cleanup explosions
     explosions = explosions.filter(e => timestamp - e.time < 500);
 
     animationFrameId = requestAnimationFrame(gameLoop);
@@ -181,21 +179,18 @@
     const input = userInput.trim().toLowerCase();
     if (!input) return;
 
-    // Find block matching input
-    // To support both Korean (exact) and English (case-insensitive)
     const targetIdx = blocks.findIndex(b => b.word.toLowerCase() === input);
 
     if (targetIdx !== -1) {
       const target = blocks[targetIdx];
-      // Fire projectile from bottom center
+      // Fire projectile from player position (camera)
       projectiles.push({
         id: projIdCounter++,
         targetId: target.id,
-        x: containerWidth / 2,
-        y: containerHeight - 50
+        x: 0,
+        y: 400, // Bottom of screen
+        z: 800 // Near camera
       });
-      // Optionally remove word from target so it can't be typed again
-      // but it will be destroyed on hit. Just let it be for now.
     }
 
     userInput = '';
@@ -224,12 +219,12 @@
     {/if}
   </div>
 
-  <div class="game-area" bind:clientWidth={containerWidth} bind:clientHeight={containerHeight}>
+  <!-- Game Area Fixed Size for Keyboard Safety -->
+  <div class="game-area">
     {#if mode === 'select'}
       <div class="select-modal">
-        <h2>워디팡 드롭</h2>
-        <p>글자 블럭이 바닥에 닿기 전에 타이핑해서 파괴하세요!</p>
-        <p>파괴 시 주변 글자에 충격파(데미지 1)를 줍니다.</p>
+        <h2>워디팡 3D (Drop)</h2>
+        <p>멀리서 다가오는 글자를 키보드로 타이핑해서 파괴하세요!</p>
         <div class="lang-btns">
           <button onclick={() => startGame('ko')}>한글 모드</button>
           <button onclick={() => startGame('en')}>영어 모드</button>
@@ -242,11 +237,10 @@
         <button onclick={() => mode = 'select'}>다시하기</button>
       </div>
     {:else}
-      <!-- Playing field -->
       <div class="field">
-        <!-- Blocks -->
         {#each blocks as b (b.id)}
-          <div class="block" style="left: {b.x}px; top: {b.y}px;">
+          <!-- 3D Transform -->
+          <div class="block" style="transform: translate3d(calc(-50% + {b.x}px), calc(-50% + {b.y}px), {b.z}px); opacity: {Math.min(1, (b.z + 4000) / 2000)};">
             <div class="hp-bar">
               <div class="hp-fill" style="width: {(b.hp / b.maxHp) * 100}%"></div>
             </div>
@@ -254,33 +248,33 @@
           </div>
         {/each}
 
-        <!-- Projectiles -->
         {#each projectiles as p (p.id)}
-          <div class="projectile" style="left: {p.x}px; top: {p.y}px;"></div>
+          <div class="projectile" style="transform: translate3d(calc(-50% + {p.x}px), calc(-50% + {p.y}px), {p.z}px);"></div>
         {/each}
 
-        <!-- Explosions -->
         {#each explosions as e (e.id)}
-          <div class="explosion" style="left: {e.x}px; top: {e.y}px;"></div>
+          <div class="explosion" style="transform: translate3d(calc(-50% + {e.x}px), calc(-50% + {e.y}px), {e.z}px);"></div>
         {/each}
-      </div>
-
-      <!-- Input Bar at the bottom -->
-      <div class="input-bar">
-        <form onsubmit={(e) => { e.preventDefault(); submitWord(); }}>
-          <input 
-            type="text" 
-            bind:value={userInput} 
-            placeholder="단어를 입력하세요"
-            use:focusInput
-            autocomplete="off"
-            spellcheck="false"
-          />
-          <button type="submit">발사</button>
-        </form>
       </div>
     {/if}
   </div>
+
+  <!-- Input Area ALWAYS at the bottom -->
+  {#if mode === 'playing'}
+    <div class="input-bar">
+      <form onsubmit={(e) => { e.preventDefault(); submitWord(); }}>
+        <input 
+          type="text" 
+          bind:value={userInput} 
+          placeholder="단어를 입력하세요"
+          use:focusInput
+          autocomplete="off"
+          spellcheck="false"
+        />
+        <button type="submit">발사</button>
+      </form>
+    </div>
+  {/if}
 </div>
 
 <style>
@@ -298,199 +292,192 @@
     justify-content: space-between;
     align-items: center;
     padding: 16px;
-    background: rgba(15, 23, 42, 0.8);
-    backdrop-filter: blur(5px);
+    background: rgba(0,0,0,0.5);
+    color: white;
     z-index: 10;
   }
 
   .exit-btn {
-    padding: 8px 16px;
     background: #ef4444;
     color: white;
     border: none;
+    padding: 8px 16px;
     border-radius: 8px;
-    font-weight: 700;
+    font-weight: bold;
     cursor: pointer;
   }
 
   .stats {
     display: flex;
     gap: 16px;
-    color: white;
-    font-weight: 800;
     font-size: 18px;
+    font-weight: bold;
   }
 
+  /* Fixed 50vh height ensures keyboard popping up doesn't crush the 3D game area */
   .game-area {
-    flex: 1;
+    width: 100%;
+    height: 55vh; /* Key fixed height */
+    min-height: 300px;
     position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-shrink: 0;
     overflow: hidden;
   }
 
   .select-modal {
-    background: white;
+    background: rgba(255,255,255,0.1);
+    backdrop-filter: blur(10px);
     padding: 32px;
     border-radius: 24px;
+    color: white;
     text-align: center;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    border: 1px solid rgba(255,255,255,0.2);
     z-index: 20;
   }
 
   .select-modal h2 {
     margin: 0 0 16px 0;
-    color: var(--color-text);
-  }
-
-  .select-modal p {
-    color: #666;
-    font-weight: 600;
-    margin-bottom: 24px;
+    font-size: 32px;
   }
 
   .lang-btns {
     display: flex;
     gap: 16px;
+    margin-top: 24px;
     justify-content: center;
   }
 
-  .lang-btns button {
+  .lang-btns button, .select-modal > button {
     padding: 12px 24px;
-    background: var(--color-primary);
-    color: white;
-    border: none;
     border-radius: 12px;
-    font-weight: 800;
-    font-size: 16px;
+    border: none;
+    background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+    color: #333;
+    font-weight: bold;
+    font-size: 18px;
     cursor: pointer;
     transition: transform 0.2s;
   }
+  .lang-btns button:active { transform: scale(0.95); }
 
-  .lang-btns button:active {
-    transform: scale(0.95);
-  }
-
-  .select-modal > button {
-    padding: 12px 32px;
-    background: var(--color-accent);
-    color: white;
-    border: none;
-    border-radius: 12px;
-    font-weight: 800;
-    font-size: 16px;
-    cursor: pointer;
-  }
-
+  /* 3D Field setup */
   .field {
     position: absolute;
-    top: 0; left: 0; width: 100%; height: 100%;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    perspective: 800px;
+    transform-style: preserve-3d;
+    overflow: hidden;
   }
 
+  /* Blocks inside 3D space */
   .block {
     position: absolute;
-    transform: translate(-50%, -50%);
-    background: rgba(255, 255, 255, 0.95);
-    padding: 4px 10px;
-    border-radius: 8px;
+    left: 50%;
+    top: 50%;
+    background: rgba(30, 41, 59, 0.9);
     border: 2px solid #38bdf8;
-    box-shadow: 0 4px 8px rgba(56, 189, 248, 0.3);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 2px;
+    border-radius: 12px;
+    padding: 12px 24px;
+    color: white;
+    font-size: 32px;
+    font-weight: bold;
+    box-shadow: 0 0 20px rgba(56, 189, 248, 0.5);
+    text-align: center;
+    /* transition: transform is NOT used because we update every frame */
   }
 
   .hp-bar {
-    width: 100%;
+    position: absolute;
+    top: -10px;
+    left: 10%;
+    width: 80%;
     height: 6px;
-    background: #e2e8f0;
+    background: rgba(255,255,255,0.2);
     border-radius: 3px;
     overflow: hidden;
   }
 
   .hp-fill {
     height: 100%;
-    background: #ef4444;
-    transition: width 0.2s;
-  }
-
-  .word {
-    font-weight: 800;
-    color: #0f172a;
-    font-size: 15px;
+    background: #10b981;
+    transition: width 0.1s;
   }
 
   .projectile {
     position: absolute;
-    width: 12px;
-    height: 12px;
-    background: #fde047;
+    left: 50%;
+    top: 50%;
+    width: 20px;
+    height: 20px;
+    background: #f59e0b;
     border-radius: 50%;
-    transform: translate(-50%, -50%);
-    box-shadow: 0 0 10px #fde047;
+    box-shadow: 0 0 20px #f59e0b;
   }
 
   .explosion {
     position: absolute;
-    width: 200px; /* Radius 100 * 2 */
-    height: 200px;
+    left: 50%;
+    top: 50%;
+    width: 100px;
+    height: 100px;
+    background: radial-gradient(circle, rgba(239,68,68,1) 0%, rgba(239,68,68,0) 70%);
     border-radius: 50%;
-    border: 4px solid #38bdf8;
-    transform: translate(-50%, -50%);
-    animation: explode 0.5s ease-out forwards;
-    pointer-events: none;
+    animation: explodeAnim 0.5s ease-out forwards;
   }
 
-  @keyframes explode {
-    0% { transform: translate(-50%, -50%) scale(0); opacity: 1; border-width: 20px; }
-    100% { transform: translate(-50%, -50%) scale(1); opacity: 0; border-width: 0px; }
+  @keyframes explodeAnim {
+    0% { transform: translate3d(-50%, -50%, 0) scale(0.5); opacity: 1; }
+    100% { transform: translate3d(-50%, -50%, 0) scale(2); opacity: 0; }
   }
 
+  /* Input bar flexes to fill bottom space */
   .input-bar {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    box-sizing: border-box;
-    padding: 12px;
-    background: #1e293b;
-    border-top: 2px solid #334155;
-    z-index: 10;
+    flex: 1;
+    background: rgba(255,255,255,0.05);
+    padding: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
   }
 
   .input-bar form {
     display: flex;
     gap: 12px;
+    width: 100%;
     max-width: 600px;
-    margin: 0 auto;
   }
 
   .input-bar input {
     flex: 1;
-    min-width: 0; /* allows input to shrink on flex */
-    padding: 12px;
-    border-radius: 8px;
-    border: none;
-    font-size: 16px;
-    font-weight: 800;
+    padding: 16px 24px;
+    font-size: 24px;
+    border-radius: 16px;
+    border: 2px solid rgba(255,255,255,0.2);
+    background: rgba(255,255,255,0.1);
+    color: white;
     outline: none;
+    text-align: center;
   }
 
   .input-bar input:focus {
-    box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.5);
+    border-color: #38bdf8;
+    box-shadow: 0 0 15px rgba(56, 189, 248, 0.3);
   }
 
   .input-bar button {
-    padding: 0 16px;
-    border-radius: 8px;
+    padding: 0 32px;
+    border-radius: 16px;
+    border: none;
     background: #38bdf8;
     color: white;
-    border: none;
-    font-size: 16px;
-    font-weight: 800;
-    white-space: nowrap;
+    font-size: 20px;
+    font-weight: bold;
     cursor: pointer;
   }
   .input-bar button:active {
