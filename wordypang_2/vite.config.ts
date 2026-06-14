@@ -6,6 +6,7 @@ export default defineConfig({
   plugins: [svelte()],
   base: '/Game1/',
   build: {
-    outDir: 'docs'
+    outDir: '../docs',
+    emptyOutDir: true
   }
 })
