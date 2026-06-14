@@ -28,3 +28,6 @@ out/
 # OS files
 .DS_Store
 Thumbs.db
+
+# Old reference code
+old_reference/
