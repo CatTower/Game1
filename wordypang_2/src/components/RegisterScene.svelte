@@ -2,7 +2,7 @@
   import { appState, type UserProfile } from '../lib/appStore.svelte';
 
   // Mode: 'login' | 'register'
-  let mode = $state<'login'|'register'>(appState.allUsers.length > 0 ? 'login' : 'register');
+  let mode = $state<'login'|'register'>('login');
   
   // Login State
   let selectedUser = $state<UserProfile | null>(null);
