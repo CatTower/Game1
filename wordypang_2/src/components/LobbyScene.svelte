@@ -51,7 +51,9 @@
       {/if}
       <div class="profile-info">
         <div class="nickname">{appState.user?.nickname}</div>
-        <div class="stats">워디팡 점수: {appState.user?.stats.wordyPang2HighScore}</div>
+        <div class="stats connected-users" title={appState.allUsers.map(u => u.nickname).join(', ')}>
+          접속자: {appState.allUsers.map(u => u.nickname).join(', ')}
+        </div>
       </div>
     </div>
     <button class="logout-btn" onclick={logout}>나가기</button>
@@ -211,6 +213,13 @@
     font-size: 12px;
     color: var(--color-text-muted, #666);
     font-weight: 600;
+  }
+
+  .connected-users {
+    max-width: 200px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   .logout-btn {
