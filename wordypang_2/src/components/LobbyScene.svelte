@@ -9,18 +9,15 @@
   let topWordyPangDrop = $derived(appState.getTopScorerWordyPangDrop());
   let topBlockBlast = $derived(appState.getTopScorerBlockBlast());
 
-  let otherUsers = $state<any[]>([]);
-
-  onMount(() => {
-    otherUsers = appState.allUsers
-      .filter(u => u.nickname !== appState.user?.nickname)
-      .map(u => ({
-        ...u,
-        x: 10 + (Math.random() * 80),
-        y: 10 + (Math.random() * 60),
-        delay: Math.random() * 3
-      }));
-  });
+  let otherUsers = $derived(appState.allUsers
+    .filter(u => u.nickname !== appState.user?.nickname)
+    .map((u, i) => ({
+      ...u,
+      x: 10 + ((i * 27) % 80), // Deterministic pseudo-random to prevent jumpiness on derived updates
+      y: 10 + ((i * 13) % 60),
+      delay: (i * 0.7) % 3
+    }))
+  );
 
   function launchGame(gameId: string) {
     if (gameId === 'wordypang2') {

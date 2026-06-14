@@ -14,11 +14,15 @@ export interface UserProfile {
   };
 }
 
+import { db } from './db';
+import { collection, doc, setDoc, onSnapshot, updateDoc, query } from 'firebase/firestore';
+
 class AppStore {
   currentScene = $state<AppScene>('register');
   user = $state<UserProfile | null>(null);
   allUsers = $state<UserProfile[]>([]);
   globalNotice = $state<string>('');
+  isLoaded = $state<boolean>(false);
 
   constructor() {
     this.loadUsers();
@@ -26,54 +30,28 @@ class AppStore {
 
   loadUsers() {
     try {
-      const savedUsers = localStorage.getItem('wordy_portal_users');
-      if (savedUsers) {
-        let parsed = JSON.parse(savedUsers);
-        if (Array.isArray(parsed)) {
-          this.allUsers = parsed;
-        }
-      } else {
-        // Fallback migration for single user
-        const oldUser = localStorage.getItem('wordy_portal_user');
-        if (oldUser) {
-          const parsed = JSON.parse(oldUser);
-          if (parsed) {
-            this.allUsers = [parsed];
-            this.saveUsers();
-            localStorage.removeItem('wordy_portal_user');
+      const q = query(collection(db, "users"));
+      onSnapshot(q, (querySnapshot) => {
+        const users: UserProfile[] = [];
+        querySnapshot.forEach((doc) => {
+          users.push(doc.data() as UserProfile);
+        });
+        this.allUsers = users;
+        this.isLoaded = true;
+        
+        if (this.user) {
+          const updatedMe = users.find(u => u.nickname === this.user?.nickname);
+          if (updatedMe) {
+            this.user = updatedMe;
           }
         }
-      }
-      
-      // Ensure all users have stats
-      this.allUsers.forEach(u => {
-        if (!u.stats) {
-          u.stats = { 
-            wordyPang2HighScore: 0, 
-            wordyPang2WordsCleared: 0, 
-            dodgePoopHighScore: 0,
-            wordChainHighScore: 0,
-            wordyPangDropHighScore: 0,
-            blockBlastHighScore: 0
-          };
-        } else {
-          if (u.stats.dodgePoopHighScore === undefined) u.stats.dodgePoopHighScore = 0;
-          if (u.stats.wordChainHighScore === undefined) u.stats.wordChainHighScore = 0;
-          if (u.stats.wordyPangDropHighScore === undefined) u.stats.wordyPangDropHighScore = 0;
-          if (u.stats.blockBlastHighScore === undefined) u.stats.blockBlastHighScore = 0;
-        }
       });
-
-      this.currentScene = 'register'; // Always start at register/login screen
+      this.currentScene = 'register';
     } catch (e) {
-      console.error('Failed to load users', e);
+      console.error('Failed to load users from Firebase', e);
       this.allUsers = [];
       this.currentScene = 'register';
     }
-  }
-
-  saveUsers() {
-    localStorage.setItem('wordy_portal_users', JSON.stringify(this.allUsers));
   }
 
   loginUser(nickname: string, pin: string): boolean {
@@ -86,8 +64,8 @@ class AppStore {
     return false;
   }
 
-  registerUser(nickname: string, pin: string, avatarImage: string) {
-    const newUser = {
+  async registerUser(nickname: string, pin: string, avatarImage: string) {
+    const newUser: UserProfile = {
       nickname,
       pin,
       avatarImage,
@@ -100,36 +78,73 @@ class AppStore {
         blockBlastHighScore: 0,
       }
     };
-    this.allUsers.push(newUser);
-    this.user = newUser;
-    this.saveUsers();
-    this.currentScene = 'lobby';
-  }
-
-  updateWordyPang2Stats(score: number, wordsCleared: number) {
-    if (this.user) {
-      if (score > this.user.stats.wordyPang2HighScore) {
-        this.user.stats.wordyPang2HighScore = score;
-      }
-      this.user.stats.wordyPang2WordsCleared += wordsCleared;
-      
-      // Update in allUsers array to keep ref sync (should be same obj, but to be safe)
-      const idx = this.allUsers.findIndex(u => u.nickname === this.user!.nickname);
-      if (idx !== -1) this.allUsers[idx] = this.user;
-      
-      this.saveUsers();
+    
+    try {
+      await setDoc(doc(db, "users", nickname), newUser);
+      this.user = newUser;
+      this.currentScene = 'lobby';
+    } catch(e) {
+      console.error('Error registering user:', e);
+      alert('회원가입 중 오류가 발생했습니다.');
     }
   }
 
-  updateDodgePoopStats(score: number) {
+  async updateWordyPang2Stats(score: number, wordsCleared: number) {
+    if (this.user) {
+      let updated = false;
+      if (score > this.user.stats.wordyPang2HighScore) {
+        this.user.stats.wordyPang2HighScore = score;
+        updated = true;
+      }
+      this.user.stats.wordyPang2WordsCleared += wordsCleared;
+      
+      await updateDoc(doc(db, "users", this.user.nickname), {
+        "stats.wordyPang2HighScore": this.user.stats.wordyPang2HighScore,
+        "stats.wordyPang2WordsCleared": this.user.stats.wordyPang2WordsCleared
+      });
+    }
+  }
+
+  async updateDodgePoopStats(score: number) {
     if (this.user) {
       if (score > this.user.stats.dodgePoopHighScore) {
         this.user.stats.dodgePoopHighScore = score;
-        
-        const idx = this.allUsers.findIndex(u => u.nickname === this.user!.nickname);
-        if (idx !== -1) this.allUsers[idx] = this.user;
-        
-        this.saveUsers();
+        await updateDoc(doc(db, "users", this.user.nickname), {
+          "stats.dodgePoopHighScore": score
+        });
+      }
+    }
+  }
+
+  async updateWordChainStats(score: number) {
+    if (this.user) {
+      if (score > this.user.stats.wordChainHighScore) {
+        this.user.stats.wordChainHighScore = score;
+        await updateDoc(doc(db, "users", this.user.nickname), {
+          "stats.wordChainHighScore": score
+        });
+      }
+    }
+  }
+
+  async updateWordyPangDropStats(score: number) {
+    if (this.user) {
+      if (score > this.user.stats.wordyPangDropHighScore) {
+        this.user.stats.wordyPangDropHighScore = score;
+        await updateDoc(doc(db, "users", this.user.nickname), {
+          "stats.wordyPangDropHighScore": score
+        });
+      }
+    }
+  }
+
+  async updateBlockBlastStats(score: number) {
+    if (this.user) {
+      if (score > this.user.stats.blockBlastHighScore) {
+        this.user.stats.blockBlastHighScore = score;
+        await updateDoc(doc(db, "users", this.user.nickname), {
+          "stats.blockBlastHighScore": score
+        });
       }
     }
   }

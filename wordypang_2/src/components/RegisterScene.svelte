@@ -294,7 +294,9 @@
               inputmode="numeric" 
             />
           </div>
-          <button class="btn btn-primary" onclick={login}>접속하기</button>
+          <button class="btn btn-primary" onclick={login} disabled={!appState.isLoaded}>
+            {appState.isLoaded ? '접속하기' : '서버 연결 중...'}
+          </button>
         </div>
       {/if}
 
